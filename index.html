@@ -229,79 +229,85 @@
         </p></footer>
     </body>
 
-<script>
-const container = document.getElementById('container');
-const animatedText = document.getElementById('animated-text');
-
-function randomColor() {
-    return `hsl(${
-        Math.random() * 0
-    }, 0%, 0%)`;
-}
-
-function randomFont() {
-    const fonts = [
-        'Roboto',
-        'Lato',
-        'Open Sans',
-        'Montserrat',
-        'Oswald',
-        'Raleway',
-        'Roboto Condensed',
-        'Roboto Slab',
-        'Source Sans Pro',
-        'Ubuntu',
-        'Poppins'
-    ];
-    return fonts[Math.floor(Math.random() * fonts.length)];
-}
-
-function animateText() {
-    const chars = animatedText.innerText.split('');
-    animatedText.innerHTML = chars.map(char => `<span style="color:${
-        randomColor()
-    }; font-family:${
-        randomFont()
-    };">${char}</span>`).join('');
-}
-
-setInterval(animateText, 100);</script><script>var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-            content.style.visibility = "hidden";
-
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            content.style.visibility = "visible";
+    <script>
+        const container = document.getElementById("container");
+        const animatedText = document.getElementById("animated-text");
+    
+        function randomColor() {
+          return `hsl(${Math.random() * 0}, 0%, 0%)`;
         }
-    });
-}</script>
-<script>
-    const videoContainer = document.getElementById("video-container");
+    
+        function randomFont() {
+          const fonts = [
+            "Roboto",
+            "Lato",
+            "Open Sans",
+            "Montserrat",
+            "Oswald",
+            "Raleway",
+            "Roboto Condensed",
+            "Roboto Slab",
+            "Source Sans Pro",
+            "Ubuntu",
+            "Poppins",
+          ];
+          return fonts[Math.floor(Math.random() * fonts.length)];
+        }
+    
+        function animateText() {
+          const chars = animatedText.innerText.split("");
+          animatedText.innerHTML = chars
+            .map(
+              (char) =>
+                `<span style="color:${randomColor()}; font-family:${randomFont()};">${char}</span>`
+            )
+            .join("");
+        //   requestAnimationFrame(animateText);
+        }
+    
+        // requestAnimationFrame(animateText);
+        setInterval(animateText, 100);
 
-    videoContainer.onmousedown = (e) => {
-      e.preventDefault();
-      let offsetX = e.clientX - videoContainer.getBoundingClientRect().left;
-      let offsetY = e.clientY - videoContainer.getBoundingClientRect().top;
+      </script>
+      <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+    
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+              content.style.maxHeight = null;
+              content.style.visibility = "hidden";
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+              content.style.visibility = "visible";
+            }
+          });
+        }
+      </script>
+      <script>
+        const videoContainer = document.getElementById("video-container");
+    
+        videoContainer.onmousedown = (e) => {
+          e.preventDefault();
+          let offsetX = e.clientX - videoContainer.getBoundingClientRect().left;
+          let offsetY = e.clientY - videoContainer.getBoundingClientRect().top;
+    
+          document.onmousemove = (e) => {
+            videoContainer.style.left = e.clientX - offsetX + "px";
+            videoContainer.style.top = e.clientY - offsetY + "px";
+          };
+    
+          document.onmouseup = () => {
+            document.onmousemove = null;
+            document.onmouseup = null;
+          };
+        };
+    
+        videoContainer.ondragstart = () => false;
 
-      document.onmousemove = (e) => {
-        videoContainer.style.left = e.clientX - offsetX + "px";
-        videoContainer.style.top = e.clientY - offsetY + "px";
-      };
-
-      document.onmouseup = () => {
-        document.onmousemove = null;
-        document.onmouseup = null;
-      };
-    };
-
-    videoContainer.ondragstart = () => false;
-    </script>
-
+        
+      </script>
 </html>
