@@ -11,6 +11,7 @@
                 padding: 10%;
                 background-color: white;
                 text-transform: uppercase;
+                
             }
             .container {
                 max-width: 1200px;
@@ -23,9 +24,10 @@
                 margin-bottom: 10px;
             }
             p.description {
-                font-size: 18px !important;
+                font-size: 14px !important;
                 text-align: left;
                 line-height: 24px;
+                font-weight: bold;
             }
             .row {
                 display: flex;
@@ -45,18 +47,19 @@
             a {
                 text-decoration: none;
                 color: #007BFF;
-                font-size: 18px;
             }
             .footer {
                 text-align: left;
                 font-size: 10px !important;
                 padding: 20px 0;
                 line-height: 15px;
+                margin: 0 auto;
+                max-width: 1200px;
             }
             @import url('https://fonts.googleapis.com/css?family=Roboto|Lato|Open+Sans|Montserrat|Oswald|Raleway|Roboto+Condensed|Roboto+Slab|Source+Sans+Pro|Ubuntu|Poppins &display=swap');
 
             .animated-text {
-                font-size: 48px;
+                font-size: 58px;
                 position: relative;
                 white-space: nowrap;
                 display: flex;
@@ -66,6 +69,7 @@
                 margin: 0 auto;
                 text-align: center;
                 text-transform: none;
+                font-weight: bold;
             }
 
             /* Style the button that is used to open and close the collapsible content */
@@ -131,10 +135,42 @@
                 border-radius: 5px;
                 margin-bottom: 20px;
             }
+
+  .video-container {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: move;
+      bottom: 20px;
+      right: 20px;
+      z-index: 200;
+    }
+
+    .video-container video {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      min-width: auto;
+      min-height: 100%;
+      width: auto;
+      height: 100%;
+      z-index: 200;
+
+    }
         </style>
 
     </head>
     <body>
+        <div class="video-container" id="video-container">
+            <video autoplay loop muted>
+              <source src="https://s1.webmshare.com/w137j.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+            <div class="drag-icon"></div>
+          </div>
         <div class="container" id="container">
             <span class="animated-text" id="animated-text">GPT&ME</span>
         </div>
@@ -144,7 +180,7 @@
                 using text prompts written by
                 <a href="https://twitter.com/spectorperson" target="_blank">
                     @spectorperson</a>. Each experiment includes a live demo link
-                &amp; a list of prompts that were used to generate the code. great job team.</p>
+                &amp; a list of prompts that were used to generate the code. great job everyone.</p>
             </div>
             <!-- project row -->
             <div class="container">
@@ -163,14 +199,19 @@
             <div class="container">
                 <button type="button" class="collapsible">GPT&ME (THIS WEBSITE)</button>
                 <div class="content">
-                    <p><a href="https://spectorperson.github.io/gpt-for-me/" target="_blank";><strong>DEMO →</strong></a>
-                    </p>
+
                     <p><strong>PROMPTS:</strong></p>
-                    <div class="prompt-box">↪ testing</div>
+                    <div class="prompt-box">↪ responsive template</div>
+                    <div class="prompt-box">↪ title</div>
+                    <div class="prompt-box">↪ draggable content</div>
+
                 </div>
             </div>
+            <footer class="footer"><p>&copy; 2023 All Rights Reserved to its AI creator. (refrain) All AI RIghts reserved to its human creator. All human RIghts reserved to its ai creator (Refrain)</p></footer>
     </body>
-</html></div></body><footer class="footer"><p>&copy; 2023 All Rights Reserved to its AI creator. (🎵 refrain 🎵) All AI RIghts reserved to its human creator. All human RIghts reserved to its ai creator (🎵 Refrain 🎵)</p></footer><script>const container = document.getElementById('container');
+
+<script>
+const container = document.getElementById('container');
 const animatedText = document.getElementById('animated-text');
 
 function randomColor() {
@@ -221,4 +262,27 @@ for (i = 0; i < coll.length; i++) {
             content.style.visibility = "visible";
         }
     });
-}</script></html>
+}</script>
+<script>
+    const videoContainer = document.getElementById("video-container");
+
+    videoContainer.onmousedown = (e) => {
+      e.preventDefault();
+      let offsetX = e.clientX - videoContainer.getBoundingClientRect().left;
+      let offsetY = e.clientY - videoContainer.getBoundingClientRect().top;
+
+      document.onmousemove = (e) => {
+        videoContainer.style.left = e.clientX - offsetX + "px";
+        videoContainer.style.top = e.clientY - offsetY + "px";
+      };
+
+      document.onmouseup = () => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    };
+
+    videoContainer.ondragstart = () => false;
+    </script>
+
+</html>
