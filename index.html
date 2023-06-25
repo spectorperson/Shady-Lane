@@ -29,9 +29,13 @@
                 font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 5%;
-                background-color: white;
+                background-color: rgb(255, 255, 255);
                 text-transform: uppercase;
-                
+                /* background-image:url("test2.jpg");
+                background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-attachment: fixed; */
             }
             .container {
                 max-width: 1200px;
@@ -72,7 +76,7 @@
             }
 
             .row:focus {
-              border: 1px dashed black;
+              border: 1px solid black;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 cursor: pointer;
             }
@@ -114,7 +118,7 @@
                 width: 100%;
                 text-align: left;
                 font-size: 18px;
-                border: 1px dashed black;
+                border: 1px solid black;
                 cursor: pointer;
                 font-weight: bold;
                 text-transform: uppercase;
@@ -139,9 +143,9 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.2s ease-out;
-                border-bottom: 1px dashed #000000;
-                border-right: 1px dashed #000000;
-                border-left: 1px dashed #000000;
+                border-bottom: 1px solid #000000;
+                border-right: 1px solid #000000;
+                border-left: 1px solid #000000;
                 text-transform: uppercase;
                 visibility: hidden;
                 transition: all 0.3s ease;
@@ -181,6 +185,7 @@
       bottom: 20px;
       right: 20px;
       z-index: 200;
+      border: solid 1px black;
     }
 
     .video-container video {
@@ -199,10 +204,22 @@
     .locked {
       text-decoration: line-through;
     }
-        </style>
 
+    #audio-control-button {
+float: right;
+background-color: white;
+border: 0px;
+padding: 0px
+    }
+
+    #aicon {
+      width: 58px;
+    }
+
+        </style>
     </head>
     <body>
+
         <div class="video-container" id="video-container">
             <video autoplay loop muted>
               <source src="w137j.webm" type="video/webm">
@@ -211,8 +228,19 @@
             <div class="drag-icon"></div>
           </div>
         <div class="container" id="container">
+
+          <audio id="audio-player" autoplay muted>
+            <source src="moon.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <button id="audio-control-button" onclick="controlAudio()">
+            <img id="aicon" src="mute_icon.svg">
+        </button>
+
           <!-- <a href="https://imgbb.com/"><img src="https://i.ibb.co/9bmM1sK/hu.png" alt="test" border="0" style="float: left; width: 58px; margin-right: 20px;"></a>   -->
           <span class="animated-text" id="animated-text">Shady&nbsp;Lane</span>
+
         </div>
         <div class="container">
             <p class="description">Mini games by
@@ -353,7 +381,7 @@ Be normal. Your physician can medicate your mood swings to help you adjust to th
         }
     
         // requestAnimationFrame(animateText);
-        setInterval(animateText, 1000);
+        setInterval(animateText, 550);
 
       </script>
       <script>
@@ -413,6 +441,25 @@ function CopyToClipboard(containerid) {
   }
 }
       </script>
+    
+    <script>
+      function controlAudio() {
+          var audioPlayer = document.getElementById('audio-player');
+          var icon = document.getElementById('aicon');
+          var time = new Date().getTime();
+      
+          if (audioPlayer.paused) {
+              audioPlayer.muted = false;
+              audioPlayer.play();
+              icon.src = "unmute_icon.svg?" + time;
+          } else {
+              audioPlayer.pause();
+              audioPlayer.currentTime = 0;
+              icon.src = "mute_icon.svg?" + time;
+          }
+      }
+      </script>
+
 <!-- 
 
 To DO:
