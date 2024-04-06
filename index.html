@@ -1,478 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shady Lane</title>
+<!-- Favicon -->
+<link rel="icon" href="fav.ico" type="image/x-icon">
 
-        <!--  Essential META Tags -->
+<!-- Meta Tags for SEO -->
+<meta name="description" content="Shady Lane">
+<meta name="keywords" content="Shady Lane">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
 <meta property="og:title" content="Shady Lane">
-<!-- <meta property="og:type" content="article"> -->
+<meta property="og:description" content="">
 <meta property="og:image" content="social.png">
-<meta property="og:url" content="https://spectorperson.github.io/Shady-Lane/">
-<meta name="twitter:card" content="social.png">
+<meta property="og:url" content="http://example.com/">
 
-<link rel="icon" type="image/x-icon" href="fav.ico">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shady Lane">
+<meta name="twitter:description" content="A sneak peek into Shady Lane.">
+<meta name="twitter:image" content="social.png">
 
-
-<!--  Non-Essential, But Recommended -->
-<meta property="og:description" content="Mini Games by Spector, Chabbidy & Friends">
-<meta property="og:site_name" content="Shady Lane">
-<!-- <meta name="twitter:image:alt" content="Alt text for image"> -->
-
-<!--  Non-Essential, But Required for Analytics -->
-<meta property="fb:app_id" content="your_app_id" />
-<meta name="twitter:site" content="@website-username">
-
-        <title>Shady Lane</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 5%;
-                background-color: rgb(255, 255, 255);
-                text-transform: uppercase;
-                /* background-image:url("test2.jpg");
-                background-position: center; 
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  background-attachment: fixed; */
-            }
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding-bottom: 20px;
-            }
-            h1 {
-                font-size: 48px;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-
-            .notes {
-              margin-top: 0px;
-              margin-bottom: 0px;
-            }
-
-            p.description {
-                font-size: 14px !important;
-                text-align: left;
-                line-height: 24px;
-                font-weight: bold;
-            }
-            .row {
-                display: flex;
-                align-items: left;
-                justify-content: space-between;
-                background-color: #ffffff;
-                padding: 20px;
-                margin-bottom: 10px;
-                border: 1px solid #e0e0e0;
-                transition: all 0.3s ease;
-            }
-            .row:hover {
-                border: 1px solid black;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-            }
-
-            .row:focus {
-              border: 1px solid black;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-            }
-
-            a {
-                text-decoration: none;
-                color: #007BFF;
-            }
-            .footer {
-                text-align: left;
-                font-size: 10px !important;
-                padding: 20px 0;
-                line-height: 15px;
-                margin: 0 auto;
-                max-width: 1200px;
-            }
-            @import url('https://fonts.googleapis.com/css?family=Roboto|Lato|Open+Sans|Montserrat|Oswald|Raleway|Roboto+Condensed|Roboto+Slab|Source+Sans+Pro|Ubuntu|Poppins &display=swap');
-
-            .animated-text {
-                font-size: 58px;
-                position: relative;
-                white-space: nowrap;
-                display: flex;
-                font-style: italic;
-                max-height: 60px;
-                min-height: 60px;
-                margin: 0 auto;
-                text-align: center;
-                text-transform: none;
-                font-weight: bold;
-            }
-
-            /* Style the button that is used to open and close the collapsible content */
-            .collapsible {
-                background-color: rgb(255, 255, 255);
-                color: black;
-                cursor: pointer;
-                padding: 20px;
-                width: 100%;
-                text-align: left;
-                font-size: 18px;
-                border: 1px solid black;
-                cursor: pointer;
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 18px;
-                transition: all 0.3s ease;
-            }
-
-            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-            .active {
-                border: 1px solid #000000;
-            }
-            .collapsible:hover {
-                background-color: rgb(255, 255, 255);
-                cursor: pointer;
-                border: 1px solid #000000;
-            }
-
-            /* Style the collapsible content. Note: hidden by default */
-            .content {
-                padding: 0px 20px;
-                background-color: white;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.2s ease-out;
-                border-bottom: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-left: 1px solid #000000;
-                text-transform: uppercase;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                font-size: 18px;
-            }
-
-            .collapsible:after {
-                content: '\02795'; /* Unicode character for "plus" sign (+) */
-                font-size: 18px;
-                color: white;
-                float: right;
-                margin-left: 5px;
-            }
-
-            .active:after {
-                content: "\2796"; /* Unicode character for "minus" sign (-) */
-            }
-
-            .prompt-box {
-                background-color: rgb(241, 241, 241);
-                padding: 20px;
-                font-family: monospace !important;
-                text-transform: none !important;
-                border-radius: 5px;
-                margin-bottom: 20px;
-                color: gray;
-                line-height: 23px;
-            }
-
-  .video-container {
-      position: fixed;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: move;
-      bottom: 20px;
-      right: 20px;
-      z-index: 200;
-      border: solid 1px black;
-    }
-
-    .video-container video {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      min-width: auto;
-      min-height: 100%;
-      width: auto;
-      height: 100%;
-      z-index: 200;
-
-    }
-
-    .locked {
-      text-decoration: line-through;
-    }
-
-    #audio-control-button {
-float: right;
-background-color: white;
-border: 0px;
-padding: 0px
-    }
-
-    #aicon {
-      width: 58px;
-    }
-
-        </style>
-    </head>
-    <body>
-
-        <div class="video-container" id="video-container">
-            <video autoplay loop muted>
-              <source src="w137j.webm" type="video/webm">
-              Your browser does not support the video tag.
-            </video>
-            <div class="drag-icon"></div>
-          </div>
-
-          
-        <div class="container" id="container">
-
-          <audio id="audio-player" autoplay muted>
-            <source src="moon.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        
-        <button id="audio-control-button" onclick="controlAudio()">
-            <img id="aicon" src="mute_icon.svg">
-        </button>
-
-          <!-- <a href="https://imgbb.com/"><img src="https://i.ibb.co/9bmM1sK/hu.png" alt="test" border="0" style="float: left; width: 58px; margin-right: 20px;"></a>   -->
-          <span class="animated-text" id="animated-text">Shady&nbsp;Lane</span>
-
-        </div>
-        <div class="container">
-            <p class="description">Mini games by
-              <a href="https://twitter.com/spectorperson" target="_blank">
-                spector</a> in collaboration with <a href="https://chat.openai.com/chat" target="_blank">CHABBIDY</a> & friends. Great job everyone.</p>
-            </div>
-            <!-- project row -->
-            <div class="container">
-            <button type="button" class="collapsible">HAMHOCK</button>
-            <div class="content">
-                <p><a href="" target="_blank" class="locked";><strong>PLAY GAME →</strong></a>
-                </p>
-                <p><strong>NOTES</strong></p>
-                <div class="prompt-box"><p class="notes">
-                  You are Drew, the tax-paying half-japanese photographer.
-<br><br>
-                  The fire alarm is going off in your urban apartment building, so you are now standing outside (with your camera, as always). You are upset because the fire alarm goes off almost every day, everyone has to evacuate, yet to date, the firefighters have found no fires...
-                  <br><br>
-                  You see Brianna outside the apartment, who lives on the floor below you. You have a crush on Brianna, but she is unfortunately obsessed with the local superhero HAMHOCK, who notoriously crushes evil with his giant, beautiful, muscular thighs. Brianna is crying outside the apartment because she can't find her cat, Havana.
-                  <br><br>
-                  While she would prefer to stay and see if HAMHOCK shows up, Brianna agrees to go on a walk with you to look for Havana. With Brianna, you must explore, use your camera to zoom in on the details, find her cat, and figure out what's going on with this fire alarm situation before your camera runs out of battery...
-                  </div>
-                </p>
-
-
-            </div>
-        </div>
-            <!-- project row -->
-
-                        <!-- project row -->
-                        <div class="container">
-                          <button type="button" class="collapsible">MUTUAL FANS</button>
-                          <div class="content">
-                              <p><a href="" target="_blank" class="locked";><strong>PLAY GAME →</strong></a>
-                              </p>
-                              <p><strong>NOTES</strong></p>
-                              <div class="prompt-box"><p class="notes">
-Love is two mutual fans blowing each other.
-                                </div>
-                              </p>
-              
-              
-                          </div>
-                      </div>
-                          <!-- project row -->
-
-                                      <!-- project row -->
-
-                        <!-- project row -->
-                        <div class="container">
-                          <button type="button" class="collapsible">The "business Remix" Maker</button>
-                          <div class="content">
-                              <p><a href="" target="_blank" class="locked";><strong>PLAY GAME →</strong></a>
-                              </p>
-                              <p><strong>NOTES</strong></p>
-                              <div class="prompt-box"><p class="notes">
-Remix popular songs and publish them permanently on Ethereum as open source intellectual property, owned by everyone and no one, permanently, forever. Brought to you by global businessman Billany Fitzsimmons.
-                                </div>
-                              </p>
-              
-              
-                          </div>
-                      </div>
-                          <!-- project row -->
-
-                                          <!-- project row -->
-                        <div class="container">
-                          <button type="button" class="collapsible">Punch Me in the Face - Now Online!</button>
-                          <div class="content">
-                              <p><a href="" target="_blank" class="locked";><strong>PLAY GAME →</strong></a>
-                              </p>
-                              <p><strong>NOTES</strong></p>
-                              <div class="prompt-box"><p class="notes">
-Punch me in the face online, permanently, forever, using Ethereum Attestation Service.</div>
-                              </p>
-              
-              
-                          </div>
-                      </div>
-                          <!-- project row -->
-
-                                                  <!-- project row -->
-                        <div class="container">
-                          <button type="button" class="collapsible">NEURODIVERGENCE</button>
-                          <div class="content">
-                              <p><a href="" target="_blank" class="locked";><strong>PLAY GAME →</strong></a>
-                              </p>
-                              <p><strong>NOTES</strong></p>
-                              <div class="prompt-box"><p class="notes">
-Be normal. Your physician can medicate your mood swings to help you adjust to the new economy.
-                                </div>
-                              </p>
-              
-              
-                          </div>
-                      </div>
-                          <!-- project row -->
-
-            <footer class="footer"><p>&copy; 2023 SHADY LANE. ALL RIGHTS RESERVED TO: (START HERE) THE PEOPLE THAT TRAINED CHABBIDY THAT TRAINED (BACK TO START)
-        </p></footer>
-
-    </body>
-
-    <script>
-        const container = document.getElementById("container");
-        const animatedText = document.getElementById("animated-text");
-    
-        function randomColor() {
-          return `hsl(${Math.random() * 0}, 0%, 0%)`;
-        }
-    
-        function randomFont() {
-          const fonts = [
-            "Roboto",
-            "Lato",
-            "Open Sans",
-            "Montserrat",
-            "Oswald",
-            "Raleway",
-            "Roboto Condensed",
-            "Roboto Slab",
-            "Source Sans Pro",
-            "Ubuntu",
-            "Poppins",
-          ];
-          return fonts[Math.floor(Math.random() * fonts.length)];
-        }
-    
-        function animateText() {
-          const chars = animatedText.innerText.split("");
-          animatedText.innerHTML = chars
-            .map(
-              (char) =>
-                `<span style="color:${randomColor()}; font-family:${randomFont()};">${char}</span>`
-            )
-            .join("");
-        //   requestAnimationFrame(animateText);
-        }
-    
-        // requestAnimationFrame(animateText);
-        setInterval(animateText, 550);
-
-      </script>
-      <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-    
-        for (i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-              content.style.maxHeight = null;
-              content.style.visibility = "hidden";
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-              content.style.visibility = "visible";
-            }
-          });
-        }
-      </script>
-      <script>
-        const videoContainer = document.getElementById("video-container");
-    
-        videoContainer.onmousedown = (e) => {
-          e.preventDefault();
-          let offsetX = e.clientX - videoContainer.getBoundingClientRect().left;
-          let offsetY = e.clientY - videoContainer.getBoundingClientRect().top;
-    
-          document.onmousemove = (e) => {
-            videoContainer.style.left = e.clientX - offsetX + "px";
-            videoContainer.style.top = e.clientY - offsetY + "px";
-          };
-    
-          document.onmouseup = () => {
-            document.onmousemove = null;
-            document.onmouseup = null;
-          };
-        };
-    
-        videoContainer.ondragstart = () => false;
-
-        
-      </script>
-      <script>
-function CopyToClipboard(containerid) {
-  if (document.selection) {
-    var range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById(containerid));
-    range.select().createTextRange();
-    document.execCommand("copy");
-  } else if (window.getSelection) {
-    var range = document.createRange();
-    range.selectNode(document.getElementById(containerid));
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    alert("chatGPT prompt copied, go to chat.openai.com/chat and paste it in the chat input")
+<style>
+  /* Basic Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-}
-      </script>
-    
-    <script>
-      function controlAudio() {
-          var audioPlayer = document.getElementById('audio-player');
-          var icon = document.getElementById('aicon');
-          var time = new Date().getTime();
-      
-          if (audioPlayer.paused) {
-              audioPlayer.muted = false;
-              audioPlayer.play();
-              icon.src = "unmute_icon.svg?" + time;
-          } else {
-              audioPlayer.pause();
-              audioPlayer.currentTime = 0;
-              icon.src = "mute_icon.svg?" + time;
-          }
-      }
-      </script>
 
-<!-- 
+  @font-face {
+    font-family: 'CustomFont';
+    src: url('Teletactile-3zavL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
 
-To DO:
+  /* Background Image */
+  body {
+    background: url('bg.png') no-repeat left center fixed; 
+    background-size: cover;
+    position: relative;
+    font-family: 'CustomFont', sans-serif;
+  }
 
-https://linkin.bio/viceworldnews
-^display like this so ppl recognize the instagram ad 
+  /* Logo as PNG */
+  .logo {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: auto;
+    z-index: 100;
+  }
 
-have carol newman be a punchable option
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
 
-fix mobile animated text issue
+  /* Gradient Rectangle */
+  body::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    width: 20px;
+    height: 100%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #737373 0%, #D9D9D9 34.75%, #EBEBE3 39.01%, #EBEBE3 68%, #B1B0AC 75.5%, #D1D0CE 85.5%, #AEADA9 92%, #6D6D6D 97.5%);
+    z-index: 1;
+  }
 
--->
+  /* Spinning Image */
+  .spinning-image {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vmin;
+    height: 80vmin;
+    background: url('portal.png') no-repeat center center;
+    background-size: cover;
+    animation: spin 30s linear infinite;
+    z-index: 2;
+  }
 
+  /* Static Image Overlay */
+  .static-image {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vmin;
+    height: 80vmin;
+    background: url('portal2.png') no-repeat center center; /* Replace 'overlay.png' with your top static image */
+    background-size: cover;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 50px;
+    font-family: 'CustomFont', sans-serif;
+  }
+
+  /* Animation */
+  @keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="logo">
+  <img src="logo.png" alt="Logo">
+</div>
+
+<div class="spinning-image"></div>
+<div class="static-image">• COMING SOON •</div>
+
+</body>
 </html>
