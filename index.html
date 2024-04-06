@@ -41,7 +41,9 @@
   
   body, html {
     height: 100%;
+    overflow: hidden; /* Disable scrolling */
     margin: 0;
+    font-family: 'CustomFont', sans-serif;
   }
 
   /* Background Image */
@@ -49,7 +51,6 @@
     background: url('bg.png') no-repeat left center fixed; 
     background-size: cover;
     position: relative;
-    font-family: 'CustomFont', sans-serif;
   }
 
   /* Logo as PNG */
@@ -58,7 +59,7 @@
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;
+    width: 180px; /* Adjust based on your logo's size */
     height: auto;
     z-index: 100;
   }
@@ -103,7 +104,7 @@
     transform: translate(-50%, -50%);
     width: 80vmin;
     height: 80vmin;
-    background: url('portal2.png') no-repeat center center; /* Replace 'overlay.png' with your top static image */
+    background: url('portal2.png') no-repeat center center;
     background-size: cover;
     z-index: 3;
     display: flex;
@@ -113,7 +114,6 @@
     font-size: 0.8rem;
     text-align: center;
     padding: 50px;
-    font-family: 'CustomFont', sans-serif;
   }
 
   /* Animation */
@@ -121,7 +121,6 @@
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to { transform: translate(-50%, -50%) rotate(360deg); }
   }
-
 </style>
 </head>
 <body>
