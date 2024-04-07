@@ -41,9 +41,8 @@
   
   body, html {
     height: 100%;
-    overflow: hidden; /* Disable scrolling */
     margin: 0;
-    font-family: 'CustomFont', sans-serif;
+    overflow: hidden; /* Prevent scrolling */
   }
 
   /* Background Image */
@@ -51,15 +50,16 @@
     background: url('bg.png') no-repeat left center fixed; 
     background-size: cover;
     position: relative;
+    font-family: 'CustomFont', sans-serif;
   }
 
-  /* Logo as PNG */
+  /* Logo */
   .logo {
     position: absolute;
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 180px; /* Adjust based on your logo's size */
+    width: 180px;
     height: auto;
     z-index: 100;
   }
@@ -82,7 +82,20 @@
     z-index: 1;
   }
 
-  /* Spinning Image */
+  /* Gradient Circle */
+  .color-changing-circle {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55vmin;
+    height: 55vmin;
+    border-radius: 50%;
+    z-index: 1; /* Ensure this sits below the images */
+    background: radial-gradient(circle, #ff0000, #0000ff);
+  }
+
+  /* Spinning Image with Blend Mode */
   .spinning-image {
     position: absolute;
     top: 55%;
@@ -90,10 +103,11 @@
     transform: translate(-50%, -50%);
     width: 80vmin;
     height: 80vmin;
-    background: url('portal.png') no-repeat center center;
+    background: url('portal3.png') no-repeat center center;
     background-size: cover;
     animation: spin 30s linear infinite;
     z-index: 2;
+    mix-blend-mode: luminosity;
   }
 
   /* Static Image Overlay */
@@ -114,9 +128,21 @@
     font-size: 0.8rem;
     text-align: center;
     padding: 50px;
+    font-family: 'CustomFont', sans-serif;
   }
 
-  /* Animation */
+  /* Blinking Text */
+  .blinking-text {
+    animation: blinkAnimation 1.5s infinite;
+  }
+
+  /* Blinking Animation Keyframes */
+  @keyframes blinkAnimation {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Animation for Spinning */
   @keyframes spin {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -129,8 +155,40 @@
   <img src="logo.png" alt="Logo">
 </div>
 
+<div class="color-changing-circle"></div>
 <div class="spinning-image"></div>
-<div class="static-image">• COMING SOON •</div>
+<div class="static-image">
+  <div id="comingSoon" class="blinking-text">• COMING SOON •</div>
+</div>
+
+<!-- Audio element for MP3 playback -->
+<audio id="myAudio" src="audio.mp3"></audio>
+
+<script>
+const circle = document.querySelector('.color-changing-circle');
+let hue = 0;
+
+function updateGradient() {
+  circle.style.background = `radial-gradient(circle, hsl(${hue}, 100%, 50%), hsl(${(hue + 120) % 360}, 100%, 50%))`;
+  hue = (hue + 0.2) % 360;
+  requestAnimationFrame(updateGradient);
+}
+
+// Start the color animation
+updateGradient();
+
+// Toggle play/pause on the MP3 file when "COMING SOON" is clicked
+const comingSoonText = document.getElementById('comingSoon');
+const audio = document.getElementById('myAudio');
+
+comingSoonText.addEventListener('click', function() {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+});
+</script>
 
 </body>
 </html>
